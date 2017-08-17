@@ -189,7 +189,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Images\favicon.ico" />
+    <Content Include="css\business-frontpage.css" />
+    <Content Include="favico.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -203,6 +204,10 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\ArgenGrill.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Images\Logo\AG-Logo-sm.PNG" />
+    <Content Include="Images\Logo\AG-Logo.PNG" />
+    <Content Include="Images\Logo\innocow-favicon.png" />
+    <Content Include="Images\Logo\Logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
