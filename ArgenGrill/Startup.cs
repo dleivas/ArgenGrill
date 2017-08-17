@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(ArgenGrill.Startup))]
+
 namespace ArgenGrill
 {
     public partial class Startup
