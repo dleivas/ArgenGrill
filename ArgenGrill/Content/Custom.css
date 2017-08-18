@@ -1,0 +1,52 @@
+﻿.navbar-custom {
+    background-color:rgba(0,0,0,0.2);
+    font-family:Calibri;
+    font-size:large;
+}
+
+/* Dropdowns backg color */
+.navbar-custom .navbar-nav .dropdown-menu  { 
+  background-color: #eee;
+}
+/* Dropdowns font color */
+.navbar-custom .navbar-nav .dropdown-menu>li>a  { 
+  color: #3d3b64;
+      font-family:Calibri;
+    font-size:large;
+}
+/* Dropdowns hover color */
+.navbar-custom .navbar-nav .dropdown-menu>li>a:hover,.navbar-custom .navbar-nav .dropdown-menu>li>a:focus  { 
+  color: #ff6a00;
+      font-family:Calibri;
+    font-size:large;
+}
+
+
+
+.navbar-custom .navbar-nav .dropdown-menu>li>a:focus{ 
+  color: #ff6a00;
+}
+
+/*menu font color*/
+.nav>li>a{
+color: #3d3b64;
+
+}
+/*menu hover color*/
+.nav>li>a:hover,.navbar-custom .navbar-nav .dropdown-menu>li>a:focus  { 
+  color: #ff6a00;
+}
+
+/*Selected dropdown colors*/
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    color: #ff6a00;
+    background-color: #eee;
+
+}
+
+.carousel-caption > h2{
+          font-family:Garamond;
+          font-size:xx-large;
+
+}
+  
