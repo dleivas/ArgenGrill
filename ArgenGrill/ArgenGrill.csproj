@@ -235,8 +235,6 @@
     <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
     <Content Include="vendor\jquery\jquery.js" />
     <Content Include="vendor\jquery\jquery.min.js" />
-    <Content Include="vendor\popper\popper.js" />
-    <Content Include="vendor\popper\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
