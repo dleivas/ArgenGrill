@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using ArgenGrill.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ArgenGrill;
-using ArgenGrill.Controllers;
+using System.Web.Mvc;
 
 namespace ArgenGrill.Tests.Controllers
 {
