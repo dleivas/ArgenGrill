@@ -88,6 +88,10 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SendGrid, Version=9.8.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>..\packages\Sendgrid.9.8.0\lib\net452\SendGrid.dll</HintPath>
       <Private>True</Private>
@@ -195,6 +199,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmailTemplateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -206,14 +211,8 @@
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SmartEmailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Email Templates\Welcome.ascx.cs">
-      <DependentUpon>Welcome.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Services\Email Templates\Welcome.ascx.designer.cs">
-      <DependentUpon>Welcome.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Services\EmailService\EmailService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -251,6 +250,8 @@
     <Content Include="Images\Carousel\Asados.jpg" />
     <Content Include="Images\Carousel\Asados2.jpg" />
     <Content Include="Images\Carousel\Asados3.jpg" />
+    <Content Include="Images\Images\Welcome.jpg" />
+    <Content Include="Images\Images\Welcome.png" />
     <Content Include="Images\Logo\AG-Logo-sm.PNG" />
     <Content Include="Images\Logo\AG-Logo.PNG" />
     <Content Include="Images\Logo\innocow-favicon.png" />
@@ -261,6 +262,12 @@
     <Content Include="Images\Products\grill.jpg" />
     <Content Include="Images\Products\Malbec.jpg" />
     <Content Include="Images\Products\salchicha.jpg" />
+    <Content Include="Images\Style\bot.png" />
+    <Content Include="Images\Style\divider.gif" />
+    <Content Include="Images\Style\face48.png" />
+    <Content Include="Images\Style\in48.png" />
+    <Content Include="Images\Style\top.png" />
+    <Content Include="Images\Style\tweet48.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -278,7 +285,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Services\Email Templates\Welcome.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -327,6 +333,7 @@
     <Content Include="Views\RolesAdmin\Delete.cshtml" />
     <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <None Include="Views\EmailTemplate\WelcomeEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
