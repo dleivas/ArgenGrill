@@ -1,7 +1,4 @@
-﻿using Microsoft.Owin;
-using Owin;
-
-[assembly: OwinStartupAttribute(typeof(ArgenGrill.Startup))]
+﻿using Owin;
 
 namespace ArgenGrill
 {
