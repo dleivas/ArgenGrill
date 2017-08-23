@@ -12,10 +12,8 @@ using System.Configuration;
 using System.Data.Entity;
 using System.IO;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.UI;
 
 namespace ArgenGrill.Models
 {
@@ -92,18 +90,14 @@ namespace ArgenGrill.Models
     {
         public async Task SendAsync(IdentityMessage iMessage)
         {
-
-            WelcomeViewModel viewModel = new WelcomeViewModel
+            EmailViewModel viewModel = new EmailViewModel
             {
                 ConfirmUrl = iMessage.Body
             };
 
             string template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/WelcomeEmail.cshtml"));
-            
-            var HtmlResult = Engine.Razor.RunCompile(template, "templateKey", null, viewModel);
-
+            var HtmlResult = Engine.Razor.RunCompile(template, "templateKey", typeof(EmailViewModel), viewModel);
             var mailAccount = ConfigurationManager.AppSettings["ApiKey"];
-
             var client = new SendGridClient(mailAccount); // https://app.sendgrid.com
 
             var msg = new SendGridMessage()
@@ -119,9 +113,7 @@ namespace ArgenGrill.Models
             };
 
             msg.AddTo(new EmailAddress(iMessage.Destination));
-
             var response = await client.SendEmailAsync(msg);
-
             string status = response.StatusCode.ToString();
         }
     }

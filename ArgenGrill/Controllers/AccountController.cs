@@ -69,16 +69,15 @@ namespace ArgenGrill.Controllers
             }
 
             // This does no enable login if email not confirmed
-            var userid = UserManager.FindByEmail(model.Email).Id;
+            //var userid = UserManager.FindByEmail(model.Email).Id;
 
-            if (!UserManager.IsEmailConfirmed(userid))
-            {
-                var code = await UserManager.GenerateEmailConfirmationTokenAsync(userid);
-                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userid, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(userid, "Confirm your account", callbackUrl);
-                ViewBag.Link = callbackUrl;
-                return View("DisplayEmail");
-            }
+            //if (!UserManager.IsEmailConfirmed(userid))
+            //{
+            //    var code = await UserManager.GenerateEmailConfirmationTokenAsync(userid);
+            //    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userid, code = code }, protocol: Request.Url.Scheme);
+            //    await UserManager.SendEmailAsync(userid, "ArgenGrill - Confirm your account", callbackUrl);
+            //    return View("DisplayEmail", model);
+            //}
 
             // This doen't count login failures towards lockout only two factor authentication
             // To enable password failures to trigger lockout, change to shouldLockout: true
@@ -86,7 +85,19 @@ namespace ArgenGrill.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+
+                    var userid = UserManager.FindByEmail(model.Email).Id;
+                    var EmailConfirmed = await UserManager.IsEmailConfirmedAsync(userid);
+
+                    if (!EmailConfirmed)
+                    {
+                        //If Email is not confirmed
+                        return View("DisplayEmail", model);
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
 
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -99,6 +110,33 @@ namespace ArgenGrill.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+        }
+
+        //
+        // POST: /Account/ResendEmail if click on button
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ResendEmail(LoginViewModel model)
+        {
+            if (model.Email == null)
+            {
+                return View("DisplayEmail", model);
+            }
+
+            // This does no enable login if email not confirmed
+            var userid = UserManager.FindByEmail(model.Email).Id;
+
+            if (!UserManager.IsEmailConfirmed(userid))
+            {
+                var code = await UserManager.GenerateEmailConfirmationTokenAsync(userid);
+                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userid, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(userid, "ArgenGrill - Confirm your account", callbackUrl);
+                ViewBag.Link = "Your email has been sent!";
+                return View("DisplayEmail", model);
+            }
+
+            return View("DisplayEmail", model);
         }
 
         //
@@ -170,9 +208,8 @@ namespace ArgenGrill.Controllers
                 {
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                    await UserManager.SendEmailAsync(user.Id, "ArgenGrill - Confirm your account", callbackUrl);
+                    return View("DisplayEmail", model);
                 }
                 AddErrors(result);
             }
