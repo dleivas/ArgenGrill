@@ -92,32 +92,15 @@ namespace ArgenGrill.Models
     {
         public async Task SendAsync(IdentityMessage iMessage)
         {
-            //// Declare stringbuilder to render control to
-            //StringBuilder sb = new StringBuilder();
-            //Page page = new Page();
-
-            //// Load the control
-            //UserControl ctrl = (UserControl) page.LoadControl("~/Services/Email Templates/Welcome.ascx");
-
-            //// Render the control into the stringbuilder
-            //StringWriter sw = new StringWriter(sb);
-            //Html32TextWriter htw = new Html32TextWriter(sw);
-            //ctrl.RenderControl(htw);
-
-
-            //// Get full body text
-            //string body = sb.ToString();
-
-            // Plug in your email service here to send an email.
-
-            string template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/WelcomeEmail.cshtml"));
 
             WelcomeViewModel viewModel = new WelcomeViewModel
             {
-                ConfirmUrl= iMessage.Body
+                ConfirmUrl = iMessage.Body
             };
 
-            var HtmlResult = Engine.Razor.RunCompile(template, "WelcomeEmail", null, viewModel);
+            string template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/WelcomeEmail.cshtml"));
+            
+            var HtmlResult = Engine.Razor.RunCompile(template, "templateKey", null, viewModel);
 
             var mailAccount = ConfigurationManager.AppSettings["ApiKey"];
 

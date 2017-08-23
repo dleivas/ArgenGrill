@@ -9,9 +9,9 @@ namespace ArgenGrill.Controllers
     public class EmailTemplateController : Controller
     {
         // GET: EmailTemplate
-        public ActionResult WelcomeEmail()
+        public ActionResult WelcomeEmail(Models.WelcomeViewModel myModel)
         {
-            return View();
+            return View(myModel);
         }
     }
 }

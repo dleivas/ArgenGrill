@@ -75,7 +75,7 @@ namespace ArgenGrill.Controllers
             {
                 var code = await UserManager.GenerateEmailConfirmationTokenAsync(userid);
                 var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userid, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(userid, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                await UserManager.SendEmailAsync(userid, "Confirm your account", callbackUrl);
                 ViewBag.Link = callbackUrl;
                 return View("DisplayEmail");
             }
