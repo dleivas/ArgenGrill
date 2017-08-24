@@ -90,13 +90,8 @@ namespace ArgenGrill.Models
     {
         public async Task SendAsync(IdentityMessage iMessage)
         {
-            EmailViewModel viewModel = new EmailViewModel
-            {
-                ConfirmUrl = iMessage.Body
-            };
+            var HtmlResult = ChooseEmail(iMessage);
 
-            string template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/WelcomeEmail.cshtml"));
-            var HtmlResult = Engine.Razor.RunCompile(template, "templateKey", typeof(EmailViewModel), viewModel);
             var mailAccount = ConfigurationManager.AppSettings["ApiKey"];
             var client = new SendGridClient(mailAccount); // https://app.sendgrid.com
 
@@ -115,6 +110,35 @@ namespace ArgenGrill.Models
             msg.AddTo(new EmailAddress(iMessage.Destination));
             var response = await client.SendEmailAsync(msg);
             string status = response.StatusCode.ToString();
+        }
+
+        private static string ChooseEmail(IdentityMessage iMessage)
+        {
+            EmailViewModel viewModel = new EmailViewModel
+            {
+                ConfirmUrl = iMessage.Body
+            };
+
+            switch (iMessage.Subject)
+            {
+                case "ArgenGrill - Confirm your account":
+                    {
+                        string template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/WelcomeEmail.cshtml"))
+                        var HtmlResult = Engine.Razor.RunCompile(template, "templateKey", typeof(EmailViewModel), viewModel);
+                    }
+                    break;
+
+                case "ArgenGrill - Reset Password":
+                    {
+                        string template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/WelcomeEmail.cshtml"))
+                        var HtmlResult = Engine.Razor.RunCompile(template, "templateKey", typeof(EmailViewModel), viewModel);
+                    }
+                    break;
+            }
+
+            ;
+
+            return HtmlResult;
         }
     }
 

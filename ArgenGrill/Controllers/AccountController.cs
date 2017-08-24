@@ -90,28 +90,25 @@ namespace ArgenGrill.Controllers
             // This doen't count login failures towards lockout only two factor authentication
             // To enable password failures to trigger lockout, change to shouldLockout: true
 
-
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            
-                switch (result)
-                {
-                    case SignInStatus.Success:
-                        return RedirectToLocal(returnUrl);
 
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToLocal(returnUrl);
 
-                    case SignInStatus.LockedOut:
-                        return View("Lockout");
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
 
-                    case SignInStatus.RequiresVerification:
-                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
 
-                    case SignInStatus.Failure:
-                    default:
-                        ModelState.AddModelError("", "Invalid login attempt.");
-                        return View(model);
-                }
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
             }
-        
+        }
 
         //
         // POST: /Account/ResendEmail if click on button
@@ -214,7 +211,7 @@ namespace ArgenGrill.Controllers
                 if (result.Succeeded)
                 {
                     MyEmailViewModel modelDisplayEmail = new MyEmailViewModel();
-                 
+
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "ArgenGrill - Confirm your account", callbackUrl);
@@ -267,8 +264,9 @@ namespace ArgenGrill.Controllers
 
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
-                ViewBag.Link = callbackUrl;
+                await UserManager.SendEmailAsync(user.Id, "ArgenGrill - Reset Password", callbackUrl);
+                ViewBag.Link = "";
+
                 return View("ForgotPasswordConfirmation");
             }
 
