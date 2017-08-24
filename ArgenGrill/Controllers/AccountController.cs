@@ -68,49 +68,50 @@ namespace ArgenGrill.Controllers
                 return View(model);
             }
 
-            // This does no enable login if email not confirmed
-            //var userid = UserManager.FindByEmail(model.Email).Id;
+            //Checks user name and password are correct
+            var userCheck = await UserManager.FindAsync(model.Email, model.Password);
 
-            //if (!UserManager.IsEmailConfirmed(userid))
-            //{
-            //    var code = await UserManager.GenerateEmailConfirmationTokenAsync(userid);
-            //    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userid, code = code }, protocol: Request.Url.Scheme);
-            //    await UserManager.SendEmailAsync(userid, "ArgenGrill - Confirm your account", callbackUrl);
-            //    return View("DisplayEmail", model);
-            //}
+            //Checks username exists
+            if (userCheck != null)
+            {
+                var userid = userCheck.Id;
+                var EmailConfirmed = await UserManager.IsEmailConfirmedAsync(userid);
 
+                if (!EmailConfirmed)
+                {
+                    MyEmailViewModel modelDisplayEmail = new MyEmailViewModel();
+                    //If Email is not confirmed
+                    modelDisplayEmail.Email = model.Email;
+                    modelDisplayEmail.userID = userid;
+
+                    return View("DisplayEmail", modelDisplayEmail);
+                }
+            }
             // This doen't count login failures towards lockout only two factor authentication
             // To enable password failures to trigger lockout, change to shouldLockout: true
+
+
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-
-                    var userid = UserManager.FindByEmail(model.Email).Id;
-                    var EmailConfirmed = await UserManager.IsEmailConfirmedAsync(userid);
-
-                    if (!EmailConfirmed)
-                    {
-                        //If Email is not confirmed
-                        return View("DisplayEmail", model);
-                    }
-                    else
-                    {
+            
+                switch (result)
+                {
+                    case SignInStatus.Success:
                         return RedirectToLocal(returnUrl);
-                    }
 
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
 
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
 
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
+
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                }
             }
-        }
+        
 
         //
         // POST: /Account/ResendEmail if click on button
@@ -121,7 +122,7 @@ namespace ArgenGrill.Controllers
         {
             if (model.Email == null)
             {
-                return View("DisplayEmail", model);
+                return View("DisplayEmail");
             }
 
             // This does no enable login if email not confirmed
@@ -129,14 +130,20 @@ namespace ArgenGrill.Controllers
 
             if (!UserManager.IsEmailConfirmed(userid))
             {
+                MyEmailViewModel modelDisplayEmail = new MyEmailViewModel();
+                //If Email is not confirmed
+                modelDisplayEmail.Email = model.Email;
+                modelDisplayEmail.userID = userid;
+
                 var code = await UserManager.GenerateEmailConfirmationTokenAsync(userid);
                 var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userid, code = code }, protocol: Request.Url.Scheme);
                 await UserManager.SendEmailAsync(userid, "ArgenGrill - Confirm your account", callbackUrl);
                 ViewBag.Link = "Your email has been sent!";
-                return View("DisplayEmail", model);
+                return View("DisplayEmail", modelDisplayEmail);
             }
 
-            return View("DisplayEmail", model);
+            ViewBag.Link = "Your email has alrady been confirmed.";
+            return View("DisplayEmail");
         }
 
         //
@@ -206,10 +213,13 @@ namespace ArgenGrill.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    MyEmailViewModel modelDisplayEmail = new MyEmailViewModel();
+                 
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "ArgenGrill - Confirm your account", callbackUrl);
-                    return View("DisplayEmail", model);
+                    modelDisplayEmail.Email = model.Email;
+                    return View("DisplayEmail", modelDisplayEmail);
                 }
                 AddErrors(result);
             }

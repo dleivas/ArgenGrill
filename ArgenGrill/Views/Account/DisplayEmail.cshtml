@@ -1,4 +1,4 @@
-﻿@model Tuple<ArgenGrill.Models.LoginViewModel, ArgenGrill.Models.RegisterViewModel>
+﻿@model ArgenGrill.Models.MyEmailViewModel
 
     @{
         ViewBag.Title = "Confirm your email";
@@ -12,7 +12,10 @@
     @using (Html.BeginForm("ResendEmail", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
+
         @Html.HiddenFor(m => m.Email)
+        
+    
         <br />
         <p class="text-info">
             <h4 class="text-warning">
@@ -21,7 +24,10 @@
         </p>
         <p class="text-info">
             <h4 class="text-warning">
-                Click the following: <input type="submit" value="Link" class="btn btn-default" /> to resend confirmation email. Thank you.
+                Click the following: <input type="submit" value="Link" class="btn btn-default" /> to resend confirmation email. 
+            </h4>
+            <h4 class="text-warning">
+                Thank you.
             </h4>
         </p>
         <br />
