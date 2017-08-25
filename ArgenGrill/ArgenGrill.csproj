@@ -226,8 +226,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\modern-business.css" />
     <Content Include="favicon.png" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -245,12 +248,19 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="AppSettingsSecrets.config" />
     <Content Include="ConnectionStrings.config" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Properties\PublishProfiles\ArgenGrill.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\Carousel\Asados.jpg" />
     <Content Include="Images\Carousel\Asados2.jpg" />
     <Content Include="Images\Carousel\Asados3.jpg" />
     <Content Include="Images\Images\reset-password.jpg" />
+    <Content Include="Images\Images\SignFace.png" />
+    <Content Include="Images\Images\SignGoogle.png" />
     <Content Include="Images\Images\Welcome.jpg" />
     <Content Include="Images\Images\Welcome.png" />
     <Content Include="Images\Logo\AG-Logo-sm.PNG" />
@@ -339,7 +349,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="font-awesome\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -365,7 +374,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51098</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51098/</IISUrl>
+          <IISUrl>https://localhost:44376/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

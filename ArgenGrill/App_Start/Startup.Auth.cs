@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using System;
+using System.Configuration;
 
 namespace ArgenGrill
 {
@@ -54,13 +55,13 @@ namespace ArgenGrill
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: ConfigurationManager.AppSettings["FaceClientID"],
+               appSecret: ConfigurationManager.AppSettings["FaceClientSecret"]);
 
-            //app.UseGoogleAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseGoogleAuthentication(
+                clientId: ConfigurationManager.AppSettings["GoogClientID"],
+                clientSecret: ConfigurationManager.AppSettings["GoogClientSecret"]);
         }
     }
 }

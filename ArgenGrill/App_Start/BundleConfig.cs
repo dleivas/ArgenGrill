@@ -24,6 +24,8 @@ namespace ArgenGrill
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/modern-business.css",
+               "~/Content/bootstrap-social.css",
+               "~/Content/font-awesome.css",
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }

@@ -1,17 +1,17 @@
 ﻿.navbar-inverse {
     background-color: rgba(0,0,0,0.2);
-    font-family:Calibri;
-    font-size:medium;
+    font-family: Calibri;
+    font-size: medium;
     border-color: #080808;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-    color: #000000;
-}
+    .navbar-inverse .navbar-nav > li > a {
+        color: #000000;
+    }
 
-.carousel-caption > h2{
-          font-family:Garamond;
-          font-size:xx-large;
+.carousel-caption > h2 {
+    font-family: Garamond;
+    font-size: xx-large;
 }
 
 .panel-heading1 {
@@ -42,4 +42,16 @@
     border-bottom: 1px solid transparent;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+}
+
+.btn-google-plus {
+    color: #fff;
+    background-color: #dd4b39;
+    border-color: rgba(0,0,0,0.2);
+}
+
+.btn-facebook {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: rgba(0,0,0,0.2);
 }

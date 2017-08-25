@@ -7,7 +7,7 @@ namespace ArgenGrill
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            //GlobalFilters.Filters.Add(new RequireHttpsAttribute());
+            filters.Add(new RequireHttpsAttribute());
         }
     }
 }
