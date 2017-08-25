@@ -119,24 +119,28 @@ namespace ArgenGrill.Models
                 ConfirmUrl = iMessage.Body
             };
 
+            string template = "";
+            var HtmlResult = "";
+
             switch (iMessage.Subject)
             {
                 case "ArgenGrill - Confirm your account":
-                    {
-                        string template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/WelcomeEmail.cshtml"))
-                        var HtmlResult = Engine.Razor.RunCompile(template, "templateKey", typeof(EmailViewModel), viewModel);
-                    }
+
+                    template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/WelcomeEmail.cshtml"));
+                    HtmlResult = Engine.Razor.RunCompile(template, "templateKey", typeof(EmailViewModel), viewModel);
                     break;
 
                 case "ArgenGrill - Reset Password":
-                    {
-                        string template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/WelcomeEmail.cshtml"))
-                        var HtmlResult = Engine.Razor.RunCompile(template, "templateKey", typeof(EmailViewModel), viewModel);
-                    }
+
+                    template = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/EmailTemplate/ResetPassword.cshtml"));
+                    HtmlResult = Engine.Razor.RunCompile(template, "templateKey", typeof(EmailViewModel), viewModel);
+                    break;
+
+                default:
+
+                    HtmlResult = "";
                     break;
             }
-
-            ;
 
             return HtmlResult;
         }

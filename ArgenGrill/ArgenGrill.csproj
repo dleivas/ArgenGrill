@@ -17,7 +17,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44376</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -93,7 +93,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="SendGrid, Version=9.8.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sendgrid.9.8.0\lib\net452\SendGrid.dll</HintPath>
+      <HintPath>..\packages\Sendgrid.9.9.0\lib\net452\SendGrid.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -250,6 +250,7 @@
     <Content Include="Images\Carousel\Asados.jpg" />
     <Content Include="Images\Carousel\Asados2.jpg" />
     <Content Include="Images\Carousel\Asados3.jpg" />
+    <Content Include="Images\Images\reset-password.jpg" />
     <Content Include="Images\Images\Welcome.jpg" />
     <Content Include="Images\Images\Welcome.png" />
     <Content Include="Images\Logo\AG-Logo-sm.PNG" />
@@ -334,6 +335,7 @@
     <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\EmailTemplate\WelcomeEmail.cshtml" />
+    <Content Include="Views\EmailTemplate\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
