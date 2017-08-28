@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace ArgenGrill.Models
+﻿namespace ArgenGrill.Models
 {
     public class EmailViewModel
     {
@@ -15,6 +10,5 @@ namespace ArgenGrill.Models
     {
         public string Email { get; set; }
         public string userID { get; set; }
-        
     }
 }

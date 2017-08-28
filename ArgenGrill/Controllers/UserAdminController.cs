@@ -1,4 +1,5 @@
-﻿using ArgenGrill.Models;
+﻿using Argengrill.Infrastructure;
+using ArgenGrill.Models;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity;
 using System.Linq;

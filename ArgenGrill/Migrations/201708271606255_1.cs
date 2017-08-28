@@ -1,6 +1,5 @@
 namespace ArgenGrill.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
 
     public partial class _1 : DbMigration

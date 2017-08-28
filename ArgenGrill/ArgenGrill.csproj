@@ -225,11 +225,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Newsletter.cs" />
+    <Compile Include="Models\NewsletterViewModel.cs" />
     <Compile Include="Models\SmartEmailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +274,8 @@
     <Content Include="Images\Carousel\Asados.jpg" />
     <Content Include="Images\Carousel\Asados2.jpg" />
     <Content Include="Images\Carousel\Asados3.jpg" />
+    <Content Include="Images\Images\loading1.gif" />
+    <Content Include="Images\Images\loading2.gif" />
     <Content Include="Images\Images\reset-password.jpg" />
     <Content Include="Images\Images\SignFace.png" />
     <Content Include="Images\Images\SignGoogle.png" />
@@ -302,6 +304,8 @@
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -368,6 +372,7 @@
     <Content Include="Views\Newsletters\Edit.cshtml" />
     <Content Include="Views\Newsletters\Index.cshtml" />
     <Content Include="Views\Shared\_Newsletter.cshtml" />
+    <Content Include="Views\Shared\_GoogleAnalitics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -388,6 +393,16 @@
     <EmbeddedResource Include="Migrations\201708271611100_3.resx">
       <DependentUpon>201708271611100_3.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Argengrill.Core\Argengrill.Core.csproj">
+      <Project>{d3e038a2-ee83-4a61-9f94-b4f47b1e84a0}</Project>
+      <Name>Argengrill.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Argengrill.Infrastructure\Argengrill.Infrastructure.csproj">
+      <Project>{a6414f6e-aa29-4880-a2d7-8f09fd864e96}</Project>
+      <Name>Argengrill.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

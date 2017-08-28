@@ -1,4 +1,5 @@
-﻿using ArgenGrill.Models;
+﻿using Argengrill.Infrastructure;
+using ArgenGrill.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -432,7 +433,7 @@ namespace ArgenGrill.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                //TODO 1 ADD EMAIL CONFIRMAION
+                        //TODO 1 ADD EMAIL CONFIRMAION
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }

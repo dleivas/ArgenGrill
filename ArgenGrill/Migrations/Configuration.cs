@@ -1,11 +1,9 @@
 namespace ArgenGrill.Migrations
 {
-    using System;
-    using System.Data.Entity;
+    using Argengrill.Infrastructure;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ArgenGrill.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
@@ -14,7 +12,7 @@ namespace ArgenGrill.Migrations
             ContextKey = "ArgenGrill.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(ArgenGrill.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
