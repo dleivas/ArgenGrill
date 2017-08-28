@@ -110,7 +110,7 @@
     <!-- Page Content -->
     <div class="container body-content">
         @RenderBody()
-        <hr />
+
         <footer class="py-5 bg-dark">
             <div class="container">
                 <p>&copy; @DateTime.Now.Year - ArgenGrill</p>
@@ -121,6 +121,16 @@
     <!-- Bootstrap core JavaScript -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+            if (window.location.hash == '#News') {
+                alert('Thank you for signing up!');
+            }
+        };
+    </script>
 </body>
 </html>

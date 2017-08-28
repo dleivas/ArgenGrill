@@ -1,0 +1,27 @@
+﻿@model ArgenGrill.Models.Newsletter
+
+@using (Ajax.BeginForm("Create", "Newsletters", new AjaxOptions() { UpdateTargetId = "result", HttpMethod = "POST" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Sign in for our Newsletter</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-1">
+                    <input type="submit" value="Sign In" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="result">
+        <p><h5 class="text-danger">@TempData["Message"]</h5></p>
+    </div>
+}

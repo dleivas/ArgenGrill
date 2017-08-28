@@ -10,4 +10,4 @@ namespace ArgenGrill
             filters.Add(new RequireHttpsAttribute());
         }
     }
-}
+}  
