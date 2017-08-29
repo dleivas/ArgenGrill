@@ -1,15 +1,21 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Argengrill.Core.Interfaces
 {
     public interface INewsletterRepository
     {
-        void Add(Newsletter p);
+        Task Add(Newsletter p);
 
-        void Edit(Newsletter p);
+        Task Edit(Newsletter p);
 
-        void Remove(int Id);
+        Task Remove(int Id);
 
-        IEnumerable GetProducts(); Newsletter FindById(int Id);
+        Task<List<Newsletter>> GetProducts();
+
+        Task<Newsletter> FindById(int id);
+
+        Task<Newsletter> FindByEmail(string email);
     }
 }

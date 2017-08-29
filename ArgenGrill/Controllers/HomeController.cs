@@ -1,6 +1,7 @@
 ﻿using Argengrill.Core;
 using Argengrill.Infrastructure;
 using ArgenGrill.Models;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ArgenGrill.Controllers
@@ -31,17 +32,24 @@ namespace ArgenGrill.Controllers
         }
 
         //
-        // POST: /Account/Login
+        // POST: /Account/CreateNewsletter
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateNewsletter(NewsletterViewModel NewsVModel)
+        public async Task<ActionResult> CreateNewsletter(NewsletterViewModel NewsVModel)
         {
             if (ModelState.IsValid)
             {
                 Newsletter News = new Newsletter();
+
+                if (!await db.EmailExists(NewsVModel.Email))
+                {
+                    ViewBag.Message = "This email has already been registered for newsletters!";
+                    return PartialView("_Newsletter");
+                }
+
                 News.Email = NewsVModel.Email;
-                db.Add(News);
+                await db.Add(News);
                 ViewBag.Message = "Thank you for sigining up!";
                 return PartialView("_Newsletter");
             }
