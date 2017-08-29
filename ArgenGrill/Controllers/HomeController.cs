@@ -36,20 +36,20 @@ namespace ArgenGrill.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateNewsletter(NewsletterViewModel NewsVModel)
+        public async Task<ActionResult> CreateNewsletter(NewsletterViewModel News)
         {
+            Newsletter MyNews = new Newsletter();
+            MyNews.Email = News.Email;
+
             if (ModelState.IsValid)
             {
-                Newsletter News = new Newsletter();
-
-                if (!await db.EmailExists(NewsVModel.Email))
+                if (await db.EmailExists(MyNews.Email))
                 {
                     ViewBag.Message = "This email has already been registered for newsletters!";
                     return PartialView("_Newsletter");
                 }
 
-                News.Email = NewsVModel.Email;
-                await db.Add(News);
+                await db.Add(MyNews);
                 ViewBag.Message = "Thank you for sigining up!";
                 return PartialView("_Newsletter");
             }
