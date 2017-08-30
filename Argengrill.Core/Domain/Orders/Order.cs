@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.Serialization;
-using Argengrill.Core.Domain.Affiliates;
 using Argengrill.Core.Domain.Common;
 using Argengrill.Core.Domain.Customers;
 using Argengrill.Core.Domain.Discounts;

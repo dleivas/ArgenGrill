@@ -6,6 +6,7 @@ using Argengrill.Core.ComponentModel.TypeConversion;
 using Argengrill.Core.Domain.Catalog;
 using Argengrill.Core.Domain.Shipping;
 using Argengrill.Core.Infrastructure;
+using Argengrill.Core.Extensions;
 
 namespace Argengrill.Core.ComponentModel.TypeConversion
 {

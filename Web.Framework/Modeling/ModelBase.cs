@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Newtonsoft.Json;
 using Argengrill.Core.Infrastructure;
+using ArgenGrill.Framework.Localization;
 
 namespace ArgenGrill.Framework.Modeling
 {

@@ -211,7 +211,6 @@
     <Compile Include="Controllers\NewslettersController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
-    <Compile Include="Framework\Modeling\ModelBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -409,6 +408,10 @@
     <ProjectReference Include="..\Argengrill.Infrastructure\Argengrill.Infrastructure.csproj">
       <Project>{a6414f6e-aa29-4880-a2d7-8f09fd864e96}</Project>
       <Name>Argengrill.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Framework\ArgenGrill.Web.Framework.csproj">
+      <Project>{555eb27b-b64c-43d4-8723-94ede73263e3}</Project>
+      <Name>ArgenGrill.Web.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

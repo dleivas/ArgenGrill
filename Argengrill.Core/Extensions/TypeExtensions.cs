@@ -4,8 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using Argengrill.Core.Infrastructure;
 
-namespace Argengrill.Core.Infrastructure
+namespace Argengrill.Core.Extensions
 {
     public static class TypeExtensions
     {
