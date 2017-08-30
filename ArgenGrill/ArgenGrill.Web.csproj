@@ -214,17 +214,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708271606255_1.cs" />
-    <Compile Include="Migrations\201708271606255_1.Designer.cs">
-      <DependentUpon>201708271606255_1.cs</DependentUpon>
+    <Compile Include="Migrations\201708300351266_InitialCreate.cs" />
+    <Compile Include="Migrations\201708300351266_InitialCreate.Designer.cs">
+      <DependentUpon>201708300351266_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708271608229_2.cs" />
-    <Compile Include="Migrations\201708271608229_2.Designer.cs">
-      <DependentUpon>201708271608229_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708271611100_3.cs" />
-    <Compile Include="Migrations\201708271611100_3.Designer.cs">
-      <DependentUpon>201708271611100_3.cs</DependentUpon>
+    <Compile Include="Migrations\201708300354027_InitialCreate1.cs" />
+    <Compile Include="Migrations\201708300354027_InitialCreate1.Designer.cs">
+      <DependentUpon>201708300354027_InitialCreate1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -390,17 +386,6 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708271606255_1.resx">
-      <DependentUpon>201708271606255_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708271608229_2.resx">
-      <DependentUpon>201708271608229_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708271611100_3.resx">
-      <DependentUpon>201708271611100_3.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Argengrill.Core\Argengrill.Core.csproj">
       <Project>{d3e038a2-ee83-4a61-9f94-b4f47b1e84a0}</Project>
       <Name>Argengrill.Core</Name>
@@ -413,6 +398,14 @@
       <Project>{555eb27b-b64c-43d4-8723-94ede73263e3}</Project>
       <Name>ArgenGrill.Web.Framework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708300351266_InitialCreate.resx">
+      <DependentUpon>201708300351266_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708300354027_InitialCreate1.resx">
+      <DependentUpon>201708300354027_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

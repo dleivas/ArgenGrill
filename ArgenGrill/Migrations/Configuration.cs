@@ -9,7 +9,7 @@ namespace ArgenGrill.Migrations
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "ArgenGrill.Models.ApplicationDbContext";
+            ContextKey = "Argengrill.Infrastructure.ApplicationDbContext";
         }
 
         protected override void Seed(ApplicationDbContext context)
